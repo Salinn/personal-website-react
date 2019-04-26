@@ -1,0 +1,208 @@
+{
+  "service": {
+    "service": "tall-paul-dot-dev",
+    "serviceObject": {
+      "name": "tall-paul-dot-dev"
+    },
+    "provider": {
+      "stage": "dev",
+      "region": "us-east-1",
+      "variableSyntax": "\\${([ ~:a-zA-Z0-9._@'\",\\-\\/\\(\\)*]+?)}",
+      "name": "aws",
+      "versionFunctions": true,
+      "remoteFunctionData": null,
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ServerlessDeploymentBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketEncryption": {
+                "ServerSideEncryptionConfiguration": [
+                  {
+                    "ServerSideEncryptionByDefault": {
+                      "SSEAlgorithm": "AES256"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "StaticSite": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "AccessControl": "PublicRead",
+              "BucketName": "www.tallpaul.dev",
+              "WebsiteConfiguration": {
+                "IndexDocument": "index.html"
+              }
+            }
+          },
+          "StaticSiteS3BucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+              "Bucket": {
+                "Ref": "StaticSite"
+              },
+              "PolicyDocument": {
+                "Statement": [
+                  {
+                    "Sid": "PublicReadGetObject",
+                    "Effect": "Allow",
+                    "Principal": "*",
+                    "Action": [
+                      "s3:GetObject"
+                    ],
+                    "Resource": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:s3:::",
+                          {
+                            "Ref": "StaticSite"
+                          },
+                          "/*"
+                        ]
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "DnsRecord": {
+            "Type": "AWS::Route53::RecordSet",
+            "Properties": {
+              "AliasTarget": {
+                "DNSName": "tallpauldev-us-east-1.amazonaws.com",
+                "HostedZoneId": "Z3AQBSTGFYJSTF"
+              },
+              "HostedZoneName": "www.tallpaul.dev.",
+              "Name": {
+                "Ref": "StaticSite"
+              },
+              "Type": "A"
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": {
+              "Ref": "ServerlessDeploymentBucket"
+            }
+          }
+        }
+      },
+      "coreCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ServerlessDeploymentBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketEncryption": {
+                "ServerSideEncryptionConfiguration": [
+                  {
+                    "ServerSideEncryptionByDefault": {
+                      "SSEAlgorithm": "AES256"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": {
+              "Ref": "ServerlessDeploymentBucket"
+            }
+          }
+        }
+      }
+    },
+    "custom": {
+      "siteName": "www.tallpaul.dev",
+      "aliasHostedZoneId": "Z3AQBSTGFYJSTF",
+      "aliasDNSName": "tallpauldev-us-east-1.amazonaws.com",
+      "s3Sync": [
+        {
+          "bucketName": "www.tallpaul.dev",
+          "localDir": "build/static"
+        }
+      ]
+    },
+    "plugins": [
+      "serverless-s3-sync"
+    ],
+    "pluginsData": {},
+    "functions": {},
+    "resources": {
+      "Resources": {
+        "StaticSite": {
+          "Type": "AWS::S3::Bucket",
+          "Properties": {
+            "AccessControl": "PublicRead",
+            "BucketName": "www.tallpaul.dev",
+            "WebsiteConfiguration": {
+              "IndexDocument": "index.html"
+            }
+          }
+        },
+        "StaticSiteS3BucketPolicy": {
+          "Type": "AWS::S3::BucketPolicy",
+          "Properties": {
+            "Bucket": {
+              "Ref": "StaticSite"
+            },
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Sid": "PublicReadGetObject",
+                  "Effect": "Allow",
+                  "Principal": "*",
+                  "Action": [
+                    "s3:GetObject"
+                  ],
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:s3:::",
+                        {
+                          "Ref": "StaticSite"
+                        },
+                        "/*"
+                      ]
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "DnsRecord": {
+          "Type": "AWS::Route53::RecordSet",
+          "Properties": {
+            "AliasTarget": {
+              "DNSName": "tallpauldev-us-east-1.amazonaws.com",
+              "HostedZoneId": "Z3AQBSTGFYJSTF"
+            },
+            "HostedZoneName": "www.tallpaul.dev.",
+            "Name": {
+              "Ref": "StaticSite"
+            },
+            "Type": "A"
+          }
+        }
+      },
+      "Outputs": {}
+    },
+    "layers": {}
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/tall-paul-dot-dev/dev/1556127381319-2019-04-24T17:36:21.319Z",
+    "artifact": ""
+  }
+}
