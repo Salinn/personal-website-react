@@ -1,7 +1,12 @@
 import { all } from 'redux-saga/effects'
-// import { watchFindArticles } from './Article'
-// notice how we now only export the rootSaga
-// single entry point to start all Sagas at once
+import {
+    watchFieldChanged,
+    watchFormSubmission
+} from './ContactMe'
+
 export default function* rootSaga() {
-    yield all([])
+    yield all([
+        watchFieldChanged(),
+        watchFormSubmission()
+    ])
 }

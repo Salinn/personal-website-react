@@ -3,5 +3,9 @@ export default {
         name: '',
         email: '',
         message: '',
-    }
+    },
+    meta: {
+        loading: false,
+    },
+    toasts: [],
 }

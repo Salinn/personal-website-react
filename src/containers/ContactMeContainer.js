@@ -15,8 +15,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fieldChanged: () => dispatch({ type: CONTACT_ME_FIELD_CHANGED }),
-        submittedForm: () => dispatch({ type: CONTACT_ME_FIELD_SUBMITTED })
+        fieldChanged: ({ name, value }) => dispatch({ type: CONTACT_ME_FIELD_CHANGED, name, value }),
+        submittedForm: (event) => dispatch({ type: CONTACT_ME_FIELD_SUBMITTED, event })
     }
 }
 
