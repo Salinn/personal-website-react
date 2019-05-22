@@ -4,21 +4,20 @@ import Toast from './Toast'
 const ToastContainer = (props) => {
     const {
         toasts,
-        deleteToast,
+        removeToast,
     } = props
 
-    const generatedToasts = toasts.map(toast => <Toast {...toast} deleteToast={deleteToast} />)
+    const generatedToasts = toasts.map(toast => {
+        return <Toast key={toast.id} {...toast} deleteToast={removeToast} />
+    })
 
     return (
-        <div id='toastContainer'>
+        <div id="toastContainer">
             {generatedToasts}
         </div>
     )
 }
 
-ToastContainer.defaultProps = {
-    toasts: [],
-    submittedForm: () => console.log("You didn't pass a deleteToast function")
-}
+ToastContainer.defaultProps = {}
 
 export default memo(ToastContainer)

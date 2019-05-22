@@ -2,7 +2,7 @@ import initialState from '../store/initialState'
 import {
     FETCH_REQUEST_STARTED,
     FETCH_REQUEST_FINISHED
-} from '../sagas/ActionTypes'
+} from '../actions/ActionTypes'
 
 export default (state = initialState.meta, action) => {
     switch (action.type) {

@@ -14,7 +14,7 @@ const Toast = (props) => {
 
     return (
         <div id={`toast-${id}`}>
-            {message}
+            <p>{message}</p>
             <button onClick={handleOnClick} type="button">close</button>
         </div>
     )
@@ -23,7 +23,6 @@ const Toast = (props) => {
 Toast.defaultProps = {
     id: 'no-id-set',
     message: 'no message set',
-    deleteToast: () => console.log("You didn't pass a deleteToast function"),
 }
 
 export default memo(Toast)

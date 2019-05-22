@@ -2,7 +2,7 @@ import initialState from '../store/initialState'
 import {
     CONTACT_ME_FIELD_UPDATE,
     CONTACT_ME_RESET_FIELDS,
-} from '../sagas/ActionTypes'
+} from '../actions/ActionTypes'
 
 export default (state = initialState.contactMe, action) => {
     switch (action.type) {

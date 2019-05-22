@@ -2,7 +2,7 @@ import initialState from '../store/initialState'
 import {
     CREATE_TOAST_MESSAGE,
     REMOVE_TOAST_MESSAGE
-} from '../sagas/ActionTypes'
+} from '../actions/ActionTypes'
 
 export default (state = initialState.toasts, action) => {
     switch (action.type) {

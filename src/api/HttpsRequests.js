@@ -10,7 +10,6 @@ const get = (url) => {
 };
 
 const post = (url, params) => {
-    console.log('params: ', params)
     return axios.post(url, params);
 };
 

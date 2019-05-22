@@ -1,23 +1,19 @@
-// Component
-import { connect } from 'react-redux'
-import ContactMe from '../components/contactMe';
 // Redux
-import {
-    CONTACT_ME_FIELD_CHANGED,
-    CONTACT_ME_FIELD_SUBMITTED
-} from '../sagas/ActionTypes'
+import { connect } from 'react-redux'
+import { fieldChanged, formSubmission } from '../actions/ContactMe'
+// Component
+import ContactMe from '../components/contactMe';
 
-function mapStateToProps(state) {
+
+export function mapStateToProps(state) {
     return {
-        ...state.ContactMe,
+        contactMe: state.contactMe,
     };
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        fieldChanged: ({ name, value }) => dispatch({ type: CONTACT_ME_FIELD_CHANGED, name, value }),
-        submittedForm: (event) => dispatch({ type: CONTACT_ME_FIELD_SUBMITTED, event })
-    }
+const mapDispatchToProps = {
+    fieldChanged,
+    formSubmission
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactMe)
