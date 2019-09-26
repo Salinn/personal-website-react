@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 // Template Component
 import App from './components/App';
+import './assets/sass/bootstrap.scss';
 // Redux
 import configureStore from './store/configureStore';
 // Routing
@@ -13,12 +14,13 @@ import configureStore from './store/configureStore';
 const store = configureStore();
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Provider store={store}>
-            <App />
-        </Provider>
-    </BrowserRouter>
-    , document.getElementById('root'));
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
