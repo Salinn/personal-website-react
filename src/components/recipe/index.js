@@ -1,12 +1,12 @@
 import React from 'react';
-import { RecipesProvider } from '../../contexts/RecipesContext';
+import { RecipeProvider } from '../../contexts/RecipeContext';
 import Page from './page';
 
 const RecipesPage = () => {
   return (
-    <RecipesProvider>
+    <RecipeProvider>
       <Page />
-    </RecipesProvider>
+    </RecipeProvider>
   );
 };
 

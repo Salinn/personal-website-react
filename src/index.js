@@ -1,23 +1,16 @@
 // React
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 // Template Component
 import App from './components/App';
 import './assets/sass/bootstrap.scss';
-// Redux
-import configureStore from './store/configureStore';
 // Routing
-
-const store = configureStore();
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <App />
   </BrowserRouter>,
   document.getElementById('root')
 );

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { RecipeContext } from '../../hooks/contexts';
+import React from 'react';
+import { useRecipeContext } from '../../contexts/RecipesContext';
 
 export const GroceryList = () => {
-  const { groceries } = useContext(RecipeContext);
+  const { groceries = [] } = useRecipeContext();
 
   const listedItems = groceries.map(({ measurement, name }) => {
     return (
