@@ -1,9 +1,9 @@
 import React from 'react';
 import Recipe from './recipe';
-import { useRecipeContext } from '../../contexts/RecipesContext';
+import { useRecipes } from './hooks';
 
-const Recipes = () => {
-  const { recipes } = useRecipeContext();
+const Recipes = props => {
+  const { recipes = [] } = useRecipes(props);
 
   return recipes.map(recipe => <Recipe key={recipe.id} recipe={recipe} />);
 };

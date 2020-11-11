@@ -1,6 +1,6 @@
 import React from 'react';
-import { useFormContext, types, fieldTypes } from '../../contexts/FormContext';
-import Input from './input';
+import { useFormContext, fieldTypes } from '../../contexts/FormContext';
+import Input from '../common/input';
 
 const findFieldType = props => {
   const {
@@ -23,7 +23,7 @@ const Form = () => {
 
   const generatedFields = Object.keys(formFields).map(fieldName => {
     const formField = formFields[fieldName];
-    return findFieldType({ formField, dispatchForm, types });
+    return findFieldType({ formField, dispatchForm });
   });
   return <form>{generatedFields}</form>;
 };

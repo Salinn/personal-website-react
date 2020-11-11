@@ -12,7 +12,6 @@ const RecipeProvider = props => {
     dispatchRecipe
   };
 
-  console.log('recipe values', values);
   return (
     <RecipeContext.Provider value={values}>{children}</RecipeContext.Provider>
   );

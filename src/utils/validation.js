@@ -45,7 +45,7 @@ const validate = props => {
   const errors = [];
   if (hasField({ formField, property: 'min' })) {
     errors.push(minValidation({ formField, value }));
-  } else if (hasField({ formField, property: 'min' })) {
+  } else if (hasField({ formField, property: 'max' })) {
     errors.push(maxValidation({ formField, value }));
   }
   return errors.filter(error => {

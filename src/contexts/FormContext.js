@@ -1,14 +1,19 @@
 import React, { createContext, useReducer, useContext } from 'react';
-import { formReducer, types } from '../reducers/FormReducer';
+import {
+  formReducer,
+  types,
+  generateInitialState
+} from '../reducers/FormReducer';
 
 const FormContext = createContext(null);
 
 const FormProvider = props => {
   const { children, fields } = props;
-  const [formFields, dispatchForm] = useReducer(formReducer, fields);
+  const initialState = generateInitialState(fields);
+  const [formData, dispatchForm] = useReducer(formReducer, initialState);
 
   const values = {
-    formFields,
+    formData,
     dispatchForm
   };
 
@@ -21,7 +26,8 @@ const useFormContext = () => {
 };
 
 const fieldTypes = {
-  INPUT: 'INPUT'
+  INPUT: 'INPUT',
+  TEXT_BOX: 'TEXT_BOX'
 };
 
 export { useFormContext, FormProvider, types, fieldTypes };

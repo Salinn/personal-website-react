@@ -5,7 +5,13 @@ import Steps from './steps';
 
 const Recipe = props => {
   const {
-    recipe: { name, photoUrl, ingredients = [], directions = [], time }
+    recipe: {
+      name = '',
+      photoUrl = '',
+      ingredients = [],
+      directions = [],
+      time = {}
+    }
   } = props;
 
   const [stepNumber, setStepNumber] = useState(1);

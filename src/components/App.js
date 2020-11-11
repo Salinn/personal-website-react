@@ -1,8 +1,8 @@
-import React from 'react'
-import AppRoutes from '../routes'
+import React from 'react';
+import AppRoutes from '../routes';
 
 const App = () => {
-    return <AppRoutes />
-}
+  return <AppRoutes />;
+};
 
-export default React.memo(App)
+export default React.memo(App);

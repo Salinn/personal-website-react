@@ -1,13 +1,27 @@
 import React from 'react';
-import { RecipeProvider } from '../../contexts/RecipeContext';
-import Page from './page';
+import { FormProvider } from '../../contexts/FormContext';
+import Form from './form';
+import { useCreateRecipeProps } from './hooks';
 
-const RecipesPage = () => {
+const CreateRecipePage = props => {
+  const { fields } = useCreateRecipeProps(props);
+
   return (
-    <RecipeProvider>
-      <Page />
-    </RecipeProvider>
+    <div className="container">
+      <div className="row">
+        <div className="col-12">
+          <h1 className="text-white text-center">Upload New Recipe</h1>
+          <div className="card">
+            <div className="card-body">
+              <FormProvider fields={fields}>
+                <Form />
+              </FormProvider>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default RecipesPage;
+export default React.memo(CreateRecipePage);

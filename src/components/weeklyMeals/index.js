@@ -1,19 +1,10 @@
 import React from 'react';
 import { MdClose } from 'react-icons/md';
-import { useRecipeContext } from '../../contexts/RecipesContext';
 
 const WeeklyMeals = () => {
-  const {
-    recipeList,
-    dispatchRecipeList
-    // dispatchGroceries
-  } = useRecipeContext();
+  const recipeList = [];
 
   const thisWeeksRecipes = recipeList.map((recipe, index) => {
-    const removeMeal = () => {
-      dispatchRecipeList({ type: 'REMOVE_RECIPE', recipe });
-      // dispatchGroceries({ type: 'REMOVE_INGREDIENTS', recipe });
-    };
     const NOT_LAST_RECIPE = index !== recipeList.length - 1;
     const line = NOT_LAST_RECIPE && <hr />;
     return (
@@ -31,7 +22,6 @@ const WeeklyMeals = () => {
           </div>
           <div className="col-1">
             <MdClose
-              onClick={removeMeal}
               color="red"
               size="2em"
               style={{ verticalAlign: 'middle', margin: '5' }}

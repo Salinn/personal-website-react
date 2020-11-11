@@ -1,8 +1,7 @@
 import React from 'react';
-import { useRecipeContext } from '../../contexts/RecipesContext';
 
 export const GroceryList = () => {
-  const { groceries = [] } = useRecipeContext();
+  const groceries = [];
 
   const listedItems = groceries.map(({ measurement, name }) => {
     return (
